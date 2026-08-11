@@ -8,13 +8,22 @@ import Select from "../../ui/Select";
 import Textarea from "../../ui/Textarea";
 import Button from "../../ui/Button";
 
-const CATEGORIES = ["Plumbing", "Electrical", "Sanitation", "Furniture", "Internet", "Other"];
+const CATEGORIES = ["Plumbing", "Electrical", "Sanitation", "Furniture", "Internet", "Personal", "Other"];
 const PRIORITIES = ["Low", "Medium", "High", "Emergency"];
 
 export default function SubmitComplaint() {
-  const { addComplaint } = useApp();
+  const { user, addComplaint } = useApp();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ title: "", category: CATEGORIES[0], priority: PRIORITIES[0], block: "", room: "", description: "", attachment: null });
+  const [form, setForm] = useState({
+    title: "",
+    category: CATEGORIES[0],
+    priority: PRIORITIES[0],
+    hall: user?.hall || "",
+    block: user?.block || "",
+    room: user?.room || "",
+    description: "",
+    attachment: null,
+  });
   const [error, setError] = useState("");
 
   const update = (key) => (e) => setForm({ ...form, [key]: e.target.type === "file" ? e.target.files[0] : e.target.value });
@@ -55,8 +64,13 @@ export default function SubmitComplaint() {
             </Select>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <Input label="Block" value={form.block} onChange={update("block")} placeholder="Block A" />
+          <p className="text-xs text-gray-400 -mb-1.5">
+            নিচের তথ্য তোমার প্রোফাইল থেকে auto-fill হয়েছে, দরকার হলে বদলে নাও।
+          </p>
+
+          <div className="grid grid-cols-3 gap-3">
+            <Input label="Hall" value={form.hall} onChange={update("hall")} placeholder="Sadhinota Hall" />
+            <Input label="Block" value={form.block} onChange={update("block")} placeholder="A" />
             <Input label="Room number" value={form.room} onChange={update("room")} placeholder="214" />
           </div>
 

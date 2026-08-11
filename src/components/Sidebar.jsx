@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { LayoutDashboard, LayoutList, FileBarChart, FilePlus2, User, LogOut, Sparkles } from "lucide-react";
+import { LayoutDashboard, LayoutList, FileBarChart, FilePlus2, User, LogOut, Users, ShieldCheck, Sparkles } from "lucide-react";
 import { useApp } from "../context/AppContext";
 
 const studentLinks = [
@@ -8,16 +8,23 @@ const studentLinks = [
   { to: "/profile", label: "Profile", icon: User },
 ];
 
+const provostLinks = [
+  { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
+  { to: "/admin/complaints", label: "All complaints", icon: LayoutList, badge: true },
+];
+
 const adminLinks = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
-  { to: "/admin/complaints", label: "All complaints", icon: LayoutList },
+  { to: "/admin/complaints", label: "All complaints", icon: LayoutList, badge: true },
+  { to: "/admin/students", label: "Manage students", icon: Users },
+  { to: "/admin/provosts", label: "Manage provosts", icon: ShieldCheck },
   { to: "/admin/reports", label: "Reports", icon: FileBarChart },
 ];
 
 export default function Sidebar() {
-  const { user, logout } = useApp();
+  const { user, logout, newComplaintsCount } = useApp();
   const navigate = useNavigate();
-  const links = user?.role === "admin" ? adminLinks : studentLinks;
+  const links = user?.role === "admin" ? adminLinks : user?.role === "provost" ? provostLinks : studentLinks;
 
   const handleLogout = () => {
     logout();
@@ -37,21 +44,28 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 px-3 py-3 space-y-1">
-        {links.map(({ to, label, icon: Icon, end }) => (
+        {links.map(({ to, label, icon: Icon, end, badge }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
             className={({ isActive }) =>
-              `group flex items-center gap-3 text-[13.5px] px-3 py-2.5 rounded-xl transition-all duration-200 ${
+              `flex items-center justify-between text-[13.5px] px-3 py-2.5 rounded-xl transition-all duration-200 ${
                 isActive
                   ? "bg-gradient-to-r from-brand-600 to-brand-500 text-white font-semibold shadow-glow"
                   : "text-white/50 hover:bg-white/[0.06] hover:text-white/90"
               }`
             }
           >
-            <Icon className="w-4 h-4 shrink-0" strokeWidth={2} />
-            {label}
+            <span className="flex items-center gap-3">
+              <Icon className="w-4 h-4 shrink-0" strokeWidth={2} />
+              {label}
+            </span>
+            {badge && newComplaintsCount > 0 && (
+              <span className="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                {newComplaintsCount}
+              </span>
+            )}
           </NavLink>
         ))}
       </nav>

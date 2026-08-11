@@ -10,6 +10,8 @@ import Profile from "./components/pages/student/Profile";
 import Dashboard from "./components/pages/admin/Dashboard";
 import AllComplaints from "./components/pages/admin/AllComplaints";
 import Reports from "./components/pages/admin/Reports";
+import ManageStudents from "./components/pages/admin/ManageStudents";
+import ManageProvosts from "./components/pages/admin/ManageProvosts";
 
 function App() {
   return (
@@ -48,7 +50,7 @@ function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoute role="admin">
+              <ProtectedRoute role={["admin", "provost"]}>
                 <Dashboard />
               </ProtectedRoute>
             }
@@ -56,7 +58,7 @@ function App() {
           <Route
             path="/admin/complaints"
             element={
-              <ProtectedRoute role="admin">
+              <ProtectedRoute role={["admin", "provost"]}>
                 <AllComplaints />
               </ProtectedRoute>
             }
@@ -66,6 +68,22 @@ function App() {
             element={
               <ProtectedRoute role="admin">
                 <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/students"
+            element={
+              <ProtectedRoute role="admin">
+                <ManageStudents />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/provosts"
+            element={
+              <ProtectedRoute role="admin">
+                <ManageProvosts />
               </ProtectedRoute>
             }
           />
