@@ -19,7 +19,7 @@ const ROLES = [
     id: "student",
     label: "Student",
     icon: GraduationCap,
-    redirect: "/complaints",
+    redirect: "/student/dashboard",
   },
   {
     id: "admin",
