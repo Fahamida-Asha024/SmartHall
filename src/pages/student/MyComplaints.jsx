@@ -25,7 +25,7 @@ export default function MyComplaints() {
     <Layout
       title="My complaints"
       subtitle="Track the complaints you've submitted"
-      actions={<Button onClick={() => navigate("/complaints/new")}>+ New complaint</Button>}
+      actions={<Button onClick={() => navigate("/complaints/submit")}>+ New complaint</Button>}
     >
       <div className="grid grid-cols-4 gap-3 mb-6">
     {[
