@@ -219,6 +219,50 @@ export const mockResolutionStats = {
   reopenedRate: 6,
   overdueRate: 9,
 };
+// Add to mockAdminData.js
+
+export const mockAdminNotifications = [
+  {
+    id: "ANOTIF-01",
+    type: "user",
+    title: "New Hall Authority Registered",
+    message: "Dr. Farida Yasmin has been registered as Hall Authority for Begum Rokeya Hall.",
+    timestamp: "2026-08-29T16:45:00",
+    read: false,
+  },
+  {
+    id: "ANOTIF-02",
+    type: "alert",
+    title: "High Complaint Volume",
+    message: "Shaheed Zia Hall has 14 pending complaints — above the usual threshold.",
+    timestamp: "2026-08-29T10:00:00",
+    read: false,
+  },
+  {
+    id: "ANOTIF-03",
+    type: "user",
+    title: "Account Deactivated",
+    message: "Prof. Anwar Sadat's Hall Authority account was deactivated.",
+    timestamp: "2026-08-28T11:00:00",
+    read: false,
+  },
+  {
+    id: "ANOTIF-04",
+    type: "system",
+    title: "Category Updated",
+    message: "The \"Administration\" complaint category was deactivated.",
+    timestamp: "2026-08-27T10:00:00",
+    read: true,
+  },
+  {
+    id: "ANOTIF-05",
+    type: "report",
+    title: "Weekly Report Ready",
+    message: "The system-wide complaint report for last week is ready to view.",
+    timestamp: "2026-08-24T09:00:00",
+    read: true,
+  },
+];
 // ---------------- Audit log ----------------
 export const mockAuditLog = [
   {

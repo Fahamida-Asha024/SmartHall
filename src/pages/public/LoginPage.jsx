@@ -25,7 +25,7 @@ const ROLES = [
     id: "admin",
     label: "Admin",
     icon: ShieldCheck,
-    redirect: "/admin",
+    redirect: "/admin/dashboard",
   },
   {
     id: "maintenance",
