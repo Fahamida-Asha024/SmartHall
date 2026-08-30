@@ -11,6 +11,11 @@ import StatusesPage from "../pages/admin/complaint-system/StatusesPage";
 import ReportsPage from "../pages/admin/monitoring/ReportsPage";
 import ActivityLogPage from "../pages/admin/monitoring/ActivityLogPage";
 import AdminProfilePage from "../pages/admin/AdminProfilePage";
+import NotificationSettingsPage from "../pages/admin/system/NotificationSettingsPage";
+import SystemSettingsPage from "../pages/admin/system/SystemSettingsPage";
+import HallAuthorityManagementPage from "../pages/admin/hall-authority/HallAuthorityManagementPage";
+import MaintenanceStaffManagementPage from "../pages/admin/maintenance-staff/MaintenanceStaffManagementPage";
+import AdminNotificationsPage from "../pages/admin/AdminNotificationsPage";
 
 export default function adminRoutes() {
   return (
@@ -29,6 +34,11 @@ export default function adminRoutes() {
       <Route path="reports" element={<ReportsPage />} />
       <Route path="activity-log" element={<ActivityLogPage />} />
       <Route path="profile" element={<AdminProfilePage />} />
+      <Route path="notification-settings" element={<NotificationSettingsPage />} />
+      <Route path="system-settings" element={<SystemSettingsPage />} />
+      <Route path="hall-authorities" element={<HallAuthorityManagementPage />} />
+      <Route path="maintenance-staff" element={<MaintenanceStaffManagementPage />} />
+      <Route path="notifications" element={<AdminNotificationsPage />} />
 
 
     </Route>
