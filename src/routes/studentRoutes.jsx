@@ -2,70 +2,43 @@ import React from "react";
 import { Route } from "react-router-dom";
 
 import StudentLayout from "../layouts/StudentLayout";
+
+// Student pages
 import StudentDashboardPage from "../pages/student/StudentDashboardPage";
+import MyComplaintsPage from "../pages/student/MyComplaintsPage";
+import SubmitComplaintPage from "../pages/student/SubmitComplaintPage";
+import StudentProfilePage from "../pages/student/StudentProfilePage";
+import StudentNotificationsPage from "../pages/student/StudentNotificationsPage";
 
-function MyComplaintsPage() {
-  return (
-    <div className="rounded-xl bg-white p-6 shadow-sm">
-      <h1 className="text-2xl font-bold text-slate-900">
-        My Complaints
-      </h1>
-
-      <p className="mt-2 text-slate-500">
-        This is your complaints page.
-      </p>
-    </div>
-  );
-}
-
-function SubmitComplaintPage() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold">Submit Complaint</h1>
-    </div>
-  );
-}
-
-function StudentProfilePage() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold">Student Profile</h1>
-    </div>
-  );
-}
-
-function StudentNotificationsPage() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold">Notifications</h1>
-    </div>
-  );
-}
-
-export default function studentRoutes() {
+export default function StudentRoutes() {
   return (
     <Route path="/student" element={<StudentLayout />}>
 
+      {/* Student Dashboard */}
       <Route
         path="dashboard"
         element={<StudentDashboardPage />}
       />
 
+      {/* My Complaints */}
       <Route
         path="complaints"
         element={<MyComplaintsPage />}
       />
 
+      {/* Submit New Complaint */}
       <Route
         path="complaints/new"
         element={<SubmitComplaintPage />}
       />
 
+      {/* Student Profile */}
       <Route
         path="profile"
         element={<StudentProfilePage />}
       />
 
+      {/* Notifications */}
       <Route
         path="notifications"
         element={<StudentNotificationsPage />}

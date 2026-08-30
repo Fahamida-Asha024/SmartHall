@@ -4,16 +4,6 @@ import { Check, X } from "lucide-react";
 import { complaintCategories, complaintPriorities } from "../../mockStudentData";
 import ImageUploader from "../../components/common/ImageUploader";
 
-/* ------------------------------------------------------------------
-   HallMate — Submit Complaint (FRONTEND-ONLY)
-   ------------------------------------------------------------------
-   No backend call yet. On submit, we generate a fake Complaint ID
-   client-side and show a confirmation screen, matching the spec's
-   requirement to display the new ID + initial status right after
-   submission. Wire this to a real POST /api/complaints call later —
-   the form fields and validation logic won't need to change.
-------------------------------------------------------------------- */
-
 function generateComplaintId() {
   const year = new Date().getFullYear();
   const random = Math.floor(1000 + Math.random() * 9000);
@@ -48,7 +38,6 @@ export default function SubmitComplaintPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const newErrors = {};
     if (!form.title.trim()) newErrors.title = "Title is required.";
     if (!form.description.trim()) newErrors.description = "Description is required.";
@@ -60,14 +49,12 @@ export default function SubmitComplaintPage() {
       return;
     }
 
-    // Simulate what the backend will return
     const complaintId = generateComplaintId();
     setSubmittedComplaint({ ...form, id: complaintId, status: "Submitted" });
   };
 
   const handleCancel = () => navigate("/student/dashboard");
 
-  // ---------------- Confirmation screen ----------------
   if (submittedComplaint) {
     return (
       <div className="mx-auto max-w-lg py-10 text-center">
@@ -118,7 +105,6 @@ export default function SubmitComplaintPage() {
     );
   }
 
-  // ---------------- Form ----------------
   return (
     <div className="space-y-5">
       <div>
@@ -128,7 +114,6 @@ export default function SubmitComplaintPage() {
 
       <form onSubmit={handleSubmit} className="rounded-2xl border border-slate-200 bg-white p-6">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {/* Left column */}
           <div className="space-y-5">
             <div>
               <label className="mb-1.5 block text-sm font-medium text-slate-700">
@@ -199,7 +184,6 @@ export default function SubmitComplaintPage() {
             </div>
           </div>
 
-          {/* Right column */}
           <div className="space-y-5">
             <div>
               <label className="mb-1.5 block text-sm font-medium text-slate-700">
@@ -223,7 +207,6 @@ export default function SubmitComplaintPage() {
           </div>
         </div>
 
-        {/* Action buttons */}
         <div className="mt-6 flex justify-end gap-3 border-t border-slate-100 pt-5">
           <button
             type="button"
