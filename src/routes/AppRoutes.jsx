@@ -5,6 +5,8 @@ import LoginPage from "../pages/public/LoginPage";
 import RegisterPage from "../pages/public/RegisterPage";
 
 import studentRoutes from "./studentRoutes";
+import adminRoutes from "./adminRoutes";
+
 
 export default function AppRoutes() {
   return (
@@ -34,6 +36,8 @@ export default function AppRoutes() {
       ===================================================== */}
 
       {studentRoutes()}
+      {adminRoutes()}
+
 
       {/* =====================================================
           FALLBACK
