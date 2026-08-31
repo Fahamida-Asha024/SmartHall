@@ -37,7 +37,7 @@ const ROLES = [
     id: "maintenance",
     label: "Maintenance Staff",
     icon: Wrench,
-    redirect: "/maintenance",
+    redirect: "/maintenance/dashboard",
   },
 ];
 
