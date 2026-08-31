@@ -12,29 +12,13 @@ import Pagination from "../../../components/common/Pagination";
 import ConfirmDialog from "../../../components/common/ConfirmDialog";
 import EmptyState from "../../../components/common/EmptyState";
 
-/* ------------------------------------------------------------------
-   HallMate — Maintenance Staff Management (FRONTEND-ONLY)
-   ------------------------------------------------------------------
-   - Shows only Maintenance Staff
-   - Create Maintenance Staff
-   - Edit Maintenance Staff
-   - Activate / Deactivate
-   - Delete
-   - Search
-   - Status filter
-   - Pagination
-   - Role is fixed to "Maintenance Staff"
-   - Maintenance Staff are not tied to a specific hall
-------------------------------------------------------------------- */
 
 const PAGE_SIZE = 6;
 const STATUSES = ["Active", "Inactive"];
 
 export default function MaintenanceStaffManagementPage() {
 
-  /* =====================================================
-     USERS
-  ===================================================== */
+  
 
   const [users, setUsers] = useState(
     initialUsers.filter(
@@ -42,9 +26,6 @@ export default function MaintenanceStaffManagementPage() {
     )
   );
 
-  /* =====================================================
-     SEARCH & FILTER
-  ===================================================== */
 
   const [search, setSearch] = useState("");
   const [filterValues, setFilterValues] = useState({});

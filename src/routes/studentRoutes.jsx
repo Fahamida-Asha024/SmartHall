@@ -3,42 +3,44 @@ import { Route } from "react-router-dom";
 
 import StudentLayout from "../layouts/StudentLayout";
 
-// Student pages
 import StudentDashboardPage from "../pages/student/StudentDashboardPage";
 import MyComplaintsPage from "../pages/student/MyComplaintsPage";
 import SubmitComplaintPage from "../pages/student/SubmitComplaintPage";
+import ComplaintDetailsPage from "../pages/student/ComplaintDetailsPage";
 import StudentProfilePage from "../pages/student/StudentProfilePage";
 import StudentNotificationsPage from "../pages/student/StudentNotificationsPage";
 
-export default function StudentRoutes() {
+export default function studentRoutes() {
   return (
     <Route path="/student" element={<StudentLayout />}>
 
-      {/* Student Dashboard */}
       <Route
         path="dashboard"
         element={<StudentDashboardPage />}
       />
 
-      {/* My Complaints */}
       <Route
         path="complaints"
         element={<MyComplaintsPage />}
       />
 
-      {/* Submit New Complaint */}
+      {/* View complaint details */}
+      <Route
+        path="complaints/:id"
+        element={<ComplaintDetailsPage />}
+      />
+
+      {/* Submit new complaint */}
       <Route
         path="complaints/new"
         element={<SubmitComplaintPage />}
       />
 
-      {/* Student Profile */}
       <Route
         path="profile"
         element={<StudentProfilePage />}
       />
 
-      {/* Notifications */}
       <Route
         path="notifications"
         element={<StudentNotificationsPage />}
