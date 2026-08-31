@@ -28,6 +28,12 @@ const ROLES = [
     redirect: "/admin/dashboard",
   },
   {
+    id: "hall-authority",
+    label: "Hall Authority",
+    icon: Building2,
+    redirect: "/hall-authority/dashboard",
+  },
+  {
     id: "maintenance",
     label: "Maintenance Staff",
     icon: Wrench,
@@ -108,7 +114,7 @@ export default function LoginPage() {
               Demo: log in as
             </p>
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               {ROLES.map((role) => {
                 const Icon = role.icon;
                 const active = selectedRole === role.id;
@@ -117,16 +123,19 @@ export default function LoginPage() {
                   <button
                     key={role.id}
                     type="button"
-                    onClick={() => setSelectedRole(role.id)}
-                    className={`flex flex-col items-center justify-center gap-1.5 rounded-lg border px-2 py-3 text-xs font-medium transition ${
+                    onClick={() => {
+                      setSelectedRole(role.id);
+                      setShowPassword(false);
+                    }}
+                    className={`flex min-h-[78px] flex-col items-center justify-center gap-1.5 rounded-lg border px-2 py-3 text-xs font-medium transition ${
                       active
                         ? "border-indigo-600 bg-indigo-50 text-indigo-600"
                         : "border-slate-200 bg-white text-slate-500 hover:bg-slate-50"
                     }`}
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4 shrink-0" />
 
-                    <span className="text-center">
+                    <span className="text-center leading-tight">
                       {role.label}
                     </span>
                   </button>
@@ -147,6 +156,8 @@ export default function LoginPage() {
                   ? "Email or Student ID"
                   : selectedRole === "admin"
                   ? "Email or Admin ID"
+                  : selectedRole === "hall-authority"
+                  ? "Email or Authority ID"
                   : "Email or Staff ID"}
               </label>
 
@@ -160,6 +171,8 @@ export default function LoginPage() {
                       ? "Student ID or university email"
                       : selectedRole === "admin"
                       ? "Admin ID or email"
+                      : selectedRole === "hall-authority"
+                      ? "Authority ID or email"
                       : "Staff ID or email"
                   }
                   className="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
@@ -245,12 +258,30 @@ export default function LoginPage() {
             </p>
           )}
 
+          {/* ==================== HALL AUTHORITY NOTE ==================== */}
+
+          {selectedRole === "hall-authority" && (
+            <p className="mt-6 text-center text-xs text-slate-400">
+              Hall Authority can review complaints, assign maintenance
+              work, and update complaint status.
+            </p>
+          )}
+
           {/* ==================== MAINTENANCE NOTE ==================== */}
 
           {selectedRole === "maintenance" && (
             <p className="mt-6 text-center text-xs text-slate-400">
-              Maintenance staff can view assigned work orders and update
-              their status.
+              Maintenance staff can view assigned work orders and
+              update their status.
+            </p>
+          )}
+
+          {/* ==================== ADMIN NOTE ==================== */}
+
+          {selectedRole === "admin" && (
+            <p className="mt-6 text-center text-xs text-slate-400">
+              Admin manages users, roles, system settings, and
+              complaint system configuration.
             </p>
           )}
 
