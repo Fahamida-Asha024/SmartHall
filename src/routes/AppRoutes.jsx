@@ -7,6 +7,7 @@ import RegisterPage from "../pages/public/RegisterPage";
 import studentRoutes from "./studentRoutes";
 import adminRoutes from "./adminRoutes";
 import maintenanceRoutes from "./maintenanceRoutes";
+import hallAuthorityRoutes from "./hallAuthorityRoutes";
 
 
 export default function AppRoutes() {
@@ -39,7 +40,7 @@ export default function AppRoutes() {
       {studentRoutes()}
       {adminRoutes()}
       {maintenanceRoutes()}
-
+      {hallAuthorityRoutes()}
 
       {/* =====================================================
           FALLBACK
